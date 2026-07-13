@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fbfaf6;
+  --foreground: #1f2a27;
 }
 
 @theme inline {
@@ -12,15 +12,77 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+.hero-scene {
+  background: #172821;
+}
+
+.hero-image {
+  background-image:
+    linear-gradient(90deg, rgba(14, 27, 22, 0.92), rgba(14, 27, 22, 0.54), rgba(14, 27, 22, 0.2)),
+    url("https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=2200&q=85");
+  background-position: center;
+  background-size: cover;
+  filter: saturate(1.08) contrast(1.03);
+  transform: scale(1.08);
+  animation: sacredPan 24s ease-in-out infinite alternate;
+}
+
+.hero-glow {
+  background:
+    radial-gradient(circle at 18% 28%, rgba(248, 214, 109, 0.34), transparent 24rem),
+    radial-gradient(circle at 78% 66%, rgba(43, 113, 104, 0.36), transparent 28rem),
+    linear-gradient(180deg, transparent 58%, rgba(251, 250, 246, 0.98));
+  animation: lightBreath 8s ease-in-out infinite alternate;
+}
+
+.scripture-band {
+  background-image:
+    linear-gradient(90deg, rgba(33, 51, 44, 0.94), rgba(33, 51, 44, 0.78)),
+    url("https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=1800&q=80");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+@keyframes sacredPan {
+  0% {
+    background-position: 45% 50%;
+    transform: scale(1.08);
+  }
+
+  100% {
+    background-position: 58% 42%;
+    transform: scale(1.16);
+  }
+}
+
+@keyframes lightBreath {
+  0% {
+    opacity: 0.68;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .scripture-band {
+    background-attachment: scroll;
+  }
 }
